@@ -1,0 +1,16 @@
+language: python
+python:
+- '2.7'
+- '3.4'
+- '3.5'
+install:
+- pip install -e .
+script: py.test tests
+deploy:
+  provider: pypi
+  user: spatz
+  password:
+    secure: wqd8K1NJToZJD2bozFwCZmb6ZrASA/fpKmwraekqgtxlJLlBJetd4gHXtSdI9FhCRTLeQ9bQLwe0GU/g2iZE5CIkggdK0gFZzDlOMW83kQK2CuURS0dQOkL6j2nXUGlhKhZ55LTe8aQ3tcFDwm3ZEoo85nHkFbtqGkUZ4HZ80mvxsryHByh+HhM2sZcmg+RxOrDrPsGWb8tTdmf3qNbwOYM3Ctm97UWO+S8bSgkgjPBhFphJ3zL4NekbLqXaudqWc/aB0bKbe70wBAlCcwDly4Y6r69Cm8v4V/WgxUAOq5AHPSL6xqfGZbO5801cRx6kFdbHYGiXfYCL8b+SILLBbfUraOGfgCww55vHHySCVSYg0LDA8ILR+bg3aTuUBVrSCzxU+kCWDO96Ium43mCDMROdw/rpwhB378KXLjvyyUw5KgkiTe5EFqB99z5yjAhby5IQQDfNSvw08ZCC/MhalxasGXBlfEgrUT8aby95FjhLRF6oAHIdQv9rjqP0gm5aJQDOvSz83uMvq9yEFe+jEmoBKqkibhn77IIHfuRxQkBp30wtm2jWH+b2w2mZzVlOC9OBF/K+CSiUl5ExyYkyqbU6sXOoNl+B3kfdzGnnvvHMZ778KM2tYxDIzMuA8MsAcfOcF5qazUKN8S0L+84PqYKe40FnYt0SxgYNSvmmOHU=
+  on:
+    tags: true
+    repo: getslash/layercake
