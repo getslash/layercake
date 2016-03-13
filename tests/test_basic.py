@@ -27,3 +27,13 @@ def test_current(lc):           # pylint: disable=redefined-outer-name
     assert current != lc.current
     assert lc.current.a == 1
     assert dict(**lc.current) == {'a': 1, 'b': 2}
+
+
+def test_decorator(lc):
+    assert lc.current.b == 2
+    @lc.with_overriding(b=3)
+    def wrapped():
+        assert lc.current.b == 3
+    assert lc.current.b == 2
+    wrapped()
+    assert lc.current.b == 2

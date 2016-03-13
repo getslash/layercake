@@ -1,6 +1,7 @@
 from contextlib import contextmanager
 from copy import deepcopy
 from munch import munchify
+import functools
 
 __all__ = ['LayerCake']
 
@@ -51,6 +52,15 @@ class LayerCake(object):
             yield self.current
         finally:
             self.pop()
+
+    def with_overriding(self, **overrides):
+        def dec(f):
+            @functools.wraps(f)
+            def wrapper(*args, **kwargs):
+                with self.overriding(**overrides):
+                    return f(*args, **kwargs)
+            return wrapper
+        return dec
 
     @property
     def current(self):
