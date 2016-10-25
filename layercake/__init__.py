@@ -1,6 +1,6 @@
 from contextlib import contextmanager
 from copy import deepcopy
-from munch import munchify
+from munch import munchify, unmunchify
 import functools
 
 __all__ = ['LayerCake']
@@ -30,6 +30,10 @@ class LayerCake(object):
             raise ValueError("Can't create empty configuration")
         self._stack = [munchify(default)]
         self._allowed_keys = frozenset(self._stack[-1])
+
+    def __str__(self):
+        return 'LayerCake{}'.format([unmunchify(x) for x in reversed(self._stack)])
+    __repr__ = __str__
 
     def push(self, **overrides):
         if not overrides:
