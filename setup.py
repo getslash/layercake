@@ -2,7 +2,7 @@ import os
 from setuptools import find_packages, setup
 
 with open(os.path.join(os.path.dirname(__file__), "layercake", "__version__.py")) as version_file:
-    exec(version_file.read())   # pylint: disable=W0122
+    exec(version_file.read())  # pylint: disable=exec-used
 
 _INSTALL_REQUIRES = [
     'munch',
@@ -25,4 +25,4 @@ setup(name="layercake",
       install_requires=_INSTALL_REQUIRES,
       scripts=[],
       namespace_packages=[],
-)
+     )

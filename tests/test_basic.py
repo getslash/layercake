@@ -1,13 +1,14 @@
-from layercake import LayerCake
 import pytest
+from layercake import LayerCake
 
+# pylint: disable=redefined-outer-name
 
 @pytest.fixture
 def lc():
     return LayerCake(a=1, b=2)
 
 
-def test_assertions(lc):        # pylint: disable=redefined-outer-name
+def test_assertions(lc):
     with pytest.raises(ValueError):
         LayerCake()
     with pytest.raises(ValueError):
@@ -18,7 +19,7 @@ def test_assertions(lc):        # pylint: disable=redefined-outer-name
         lc.pop()
 
 
-def test_current(lc):           # pylint: disable=redefined-outer-name
+def test_current(lc):
     assert lc.current.a == 1
     with lc.overriding(a=3) as current:
         assert current.a == 3
