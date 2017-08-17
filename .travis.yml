@@ -4,9 +4,13 @@ python:
 - '3.3'
 - '3.4'
 - '3.5'
+- '3.6'
 install:
 - pip install -e .
-script: py.test tests
+- pip install -r test_requirements.txt
+script:
+- pylint --rcfile=.pylintrc layercake tests setup.py
+- pytest tests
 deploy:
   provider: pypi
   user: spatz
