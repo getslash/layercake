@@ -35,6 +35,9 @@ class LayerCake(object):
         return 'LayerCake{}'.format([unmunchify(x) for x in reversed(self._stack)])
     __repr__ = __str__
 
+    def reset(self):
+        del self._stack[1:]
+
     def push(self, **overrides):
         if not overrides:
             raise ValueError("Can't push empty configuration")

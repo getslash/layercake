@@ -38,3 +38,15 @@ def test_decorator(lc):
     assert lc.current.b == 2
     wrapped()
     assert lc.current.b == 2
+
+
+def test_reset(lc):
+    # pylint: disable=protected-access
+    assert len(lc._stack) == 1
+    lc.push(a=3, b=2)
+    lc.push(a=5, b=9)
+    assert len(lc._stack) == 3
+    lc.reset()
+    assert len(lc._stack) == 1
+    assert lc.current.a == 1
+    assert lc.current.b == 2
