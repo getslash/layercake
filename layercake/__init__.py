@@ -32,7 +32,7 @@ class LayerCake(object):
         self._allowed_keys = frozenset(self._stack[-1])
 
     def __str__(self):
-        return 'LayerCake{}'.format([unmunchify(x) for x in reversed(self._stack)])
+        return f"LayerCake{[unmunchify(x) for x in reversed(self._stack)]}"
     __repr__ = __str__
 
     def reset(self):
