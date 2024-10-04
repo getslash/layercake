@@ -1,1 +1,3 @@
-__version__ = '0.4.0'
+from importlib.metadata import distribution
+
+__version__ = distribution("layercake").version
