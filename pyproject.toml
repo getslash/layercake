@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling>=0.25.1", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "layercake"
+description = "Configuration stack"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "BSD 3-Clause License" }
+
+classifiers = [
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = ["munch"]
+dynamic = ["version"]
+
+authors = [{ name = "Dror Levin", email = "spatz@psybear.com" }]
+
+[project.urls]
+"Homepage" = "https://github.com/getslash/layercake"
+
+[project.optional-dependencies]
+testing = ["pytest", "pylint"]
+
+[tool.hatch.version]
+source = "vcs"

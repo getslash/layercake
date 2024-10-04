@@ -3,11 +3,11 @@ from copy import deepcopy
 from munch import munchify, unmunchify
 import functools
 
-__all__ = ['LayerCake']
+__all__ = ["LayerCake"]
 
 
 class _Frosting(object):
-    __slots__ = ['_obj']
+    __slots__ = ["_obj"]
 
     def __init__(self, obj):
         super(_Frosting, self).__init__()
@@ -32,7 +32,8 @@ class LayerCake(object):
         self._allowed_keys = frozenset(self._stack[-1])
 
     def __str__(self):
-        return 'LayerCake{}'.format([unmunchify(x) for x in reversed(self._stack)])
+        return f"LayerCake{[unmunchify(x) for x in reversed(self._stack)]}"
+
     __repr__ = __str__
 
     def reset(self):
@@ -66,7 +67,9 @@ class LayerCake(object):
             def wrapper(*args, **kwargs):
                 with self.overriding(**overrides):
                     return f(*args, **kwargs)
+
             return wrapper
+
         return dec
 
     @property
